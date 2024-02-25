@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: [
+    './src/**/*.tsx',
+    './index.html'
+  ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: 'Inter, sans-serif'
+    },
   },
   plugins: [],
 }
