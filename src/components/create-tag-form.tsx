@@ -13,7 +13,7 @@ const createTagSchema = z.object({
 type CreateTagSchema = z.infer<typeof createTagSchema>
 
 function getSlugFromString(input: string): string {
-  return  input
+  return input
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
@@ -28,8 +28,8 @@ export function CreateTagForm() {
     resolver: zodResolver(createTagSchema),
   })
 
-  const slug = watch('title') 
-    ? getSlugFromString(watch('title')) 
+  const slug = watch('title')
+    ? getSlugFromString(watch('title'))
     : ''
 
   const { mutateAsync } = useMutation({
@@ -61,10 +61,10 @@ export function CreateTagForm() {
     <form onSubmit={handleSubmit(createTag)} className="w-full space-y-6">
       <div className="space-y-2">
         <label className="text-sm font-medium block" htmlFor="title">Tag name</label>
-        <input 
+        <input
           {...register('title')}
-          id="name" 
-          type="text" 
+          id="name"
+          type="text"
           className="border border-zinc-800 rounded-lg px-3 py-2.5 bg-zinc-800/50 w-full text-sm"
         />
         {formState.errors?.title && (
@@ -74,10 +74,10 @@ export function CreateTagForm() {
 
       <div className="space-y-2">
         <label className="text-sm font-medium block" htmlFor="slug">Slug</label>
-        <input 
-          id="slug" 
-          type="text" 
-          readOnly 
+        <input
+          id="slug"
+          type="text"
+          readOnly
           value={slug}
           className="border border-zinc-800 rounded-lg px-3 py-2 bg-zinc-800/50 w-full text-sm"
         />
